@@ -1,0 +1,39 @@
+{
+	"name": "my-better-t-app",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"check": "oxlint",
+		"prepare": "husky",
+		"dev": "turbo dev",
+		"build": "turbo build",
+		"check-types": "turbo check-types",
+		"dev:native": "turbo -F native dev",
+		"dev:web": "turbo -F web dev",
+		"dev:server": "turbo -F server dev",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint . --write",
+		"format": "biome format . --write",
+		"format:check": "biome format .",
+		"check:all": "biome check .",
+		"check:all:fix": "biome check . --write"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"turbo": "^2.5.4",
+		"@biomejs/biome": "^2.1.2",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
+		"oxlint": "^1.8.0"
+	},
+	"lint-staged": {
+		"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
+			"biome check --write",
+			"oxlint"
+		]
+	},
+	"packageManager": "npm@11.4.1"
+}
